@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solution: Top K Frequent Elements</title>
+    <link rel="icon" href="coding_icon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        pre {
+            background-color:  #f4f4f4;
+            padding: 10px;
+            border: 1px solid #bfbaba;
+        }
+        code {
+            display:block;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h2>Solution code for problem 347: Top K Frequent Elements</h2>
+    <pre>
+<code>
+vector&lt;int&gt; topKFrequent(vector&lt;int&gt;& nums, int k) {
+    unordered_map&lt;int, int&gt; count;
+    for (int num : nums) {
+        count[num]++;
+    }
+    
+    auto compare = [](const pair&lt;int, int&gt;& p1, const pair&lt;int, int&gt;& p2) {
+        return p1.first > p2.first; 
+    };
+    
+    priority_queue&lt;pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt;, decltype(compare)&gt; minheap(compare);
+    
+    for (const auto& [num, freq] : count) {
+        minheap.push({freq, num});
+        if (minheap.size() > k) {
+            minheap.pop();
+        }
+    }
+    
+    vector&lt;int&gt; ans;
+    while (!minheap.empty()) {
+        ans.push_back(minheap.top().second);
+        minheap.pop();
+    }
+    
+    return ans;
+}
+</code>
+    </pre>
+    <a href="http://127.0.0.1:3000/main.html">Go to main page</a>
+</body>
+</html>

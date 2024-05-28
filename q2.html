@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand of Straights</title>
+    <link rel="icon" href="coding_icon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            color: #0f0f0f;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-top: 10px;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #1280ee;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>Leetcode Question No. 846: Hand of Straights</h2>
+    <p>Problem statement: Alice has some number of cards and she wants to rearrange the cards into groups so that each group is of size groupSize, and consists of groupSize consecutive cards.</p>
+    <p>
+        Given an integer array hand where hand[i] is the value written on the ith card and an integer groupSize, return true if she can rearrange the cards, or false otherwise.</p>
+    <pre>
+Example 1:
+
+Input: hand = [1,2,3,6,2,3,4,7,8], groupSize = 3
+Output: true
+Explanation: Alice's hand can be rearranged as [1,2,3],[3,4],[6,7,8]
+Example 2:
+        
+Input: hand = [1,2,3,4,5], groupSize = 4
+Output: false
+Explanation: Alice's hand can not be rearranged intgroups of 4.
+<hr> 
+Constraints:
+1 <= hand.length <= 104
+0 <= hand[i] <= 109
+1 <= groupSize <= hand.length
+    </pre>
+
+    <form action="post" method="post">
+        <textarea name="code" id="q2" placeholder="Code here"></textarea>
+    </form>
+    <a href="http://127.0.0.1:3000/sol2.html">Click here for solution</a>
+</body>
+</html>

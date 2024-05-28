@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solution: Top K Frequent Elements</title>
+    <link rel="icon" href="coding_icon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        pre {
+            background-color:  #f4f4f4;
+            padding: 10px;
+            border: 1px solid #bfbaba;
+        }
+        code {
+            display:block;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h2>Solution code for problem 846. Hand of Straights</h2>
+    <pre>
+<code>
+    #include &lt;iostream&gt;
+    #include &lt;vector&gt;
+    #include &lt;algorithm&gt;
+    #include &lt;unordered_map&gt;
+    #include &lt;limits.h&gt;
+    
+    using namespace std;
+    int getMin(unordered_map&lt;int, int&gt; &myMap)
+    {
+        int minValue = INT_MAX;
+        for (auto it : myMap)
+        {
+            if (it.second != 0)
+            {
+                minValue = min(minValue, it.first);
+            }
+        }
+        return minValue;
+    }
+    
+    bool isNStraightHand(vector&lt;int&gt; &hand, int groupsize)
+    {
+        int len = hand.size();
+        if (len % groupsize != 0)
+            return false;
+    
+        sort(hand.begin(), hand.end());
+    
+        unordered_map&lt;int, int&gt; count;
+        for (int n : hand)
+        {
+            count[n]++;
+        }
+    
+        while (!count.empty())
+        {
+            int start = getMin(count);
+            if (start == INT_MAX)
+                break;
+    
+            for (int i = 0; i &lt; groupsize; i++)
+            {
+                if (count.find(start + i) == count.end() || count[start + i] == 0)
+                {
+                    return false;
+                }
+                count[start + i]--;
+                if (count[start + i] == 0)
+                {
+                    count.erase(start + i);
+                }
+            }
+        }
+    
+        return true;
+    }
+    
+</code>
+    </pre>
+    <a href="http://127.0.0.1:3000/main.html">Go to main page</a>
+</body>
+</html>
